@@ -2,10 +2,11 @@ import 'package:app_cuoiki/components/button/app_elevated_button.dart';
 import 'package:app_cuoiki/components/text_field/app_text_field_password.dart';
 import 'package:app_cuoiki/components/text_field/app_textfield.dart';
 import 'package:app_cuoiki/pages/login_page.dart';
-import 'package:app_cuoiki/pages/sendcode_page.dart';
+import 'package:app_cuoiki/pages/otp_page.dart';
 import 'package:app_cuoiki/resources/app_color.dart';
 import 'package:app_cuoiki/utils/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -21,15 +22,21 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey();
 
+    void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-         return Scaffold(
-      appBar: AppBar(
-        title: const Text('Đăng ký',
-        style: TextStyle(),),
-        
-      ),
-
+    return GestureDetector(
+      child: Scaffold(
+      backgroundColor: AppColor.white,
       body: Center(
         child: SingleChildScrollView(
               child: Padding(
@@ -41,10 +48,17 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 const Text(
                   'Đăng kí',
-                  style: TextStyle(color: AppColor.pink, fontSize: 24.0),
+                  style: TextStyle(color: AppColor.pink, fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30.0),
+                const Text(
+                  'Tạo tài khoản mới',
+                  style: TextStyle(color: AppColor.grey, 
+                  fontSize: 15.0,),
+                  textAlign: TextAlign.center,
+                ),
+               const SizedBox(height: 30.0),
+
                 AppTextField(
                     controller: userController,
                     textInputAction: TextInputAction.next,
@@ -95,8 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           'Đăng nhập',
                           style: TextStyle(
                             color: AppColor.pink,
-                            fontSize: 16.0,
-                            //decoration: TextDecoration.underline,
+                            fontSize: 16.0
                           ),
                         ),
                       ),
@@ -124,7 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           )
           ))),
-    );
+    ));
   
   }
 }

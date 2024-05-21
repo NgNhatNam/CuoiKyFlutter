@@ -35,36 +35,32 @@ class _LoginPageState extends State<LoginPage> {
   }
   Widget build(BuildContext context) {
      return GestureDetector(
-        child: Scaffold(
+      child: Scaffold(
       backgroundColor: AppColor.white,
-      appBar: AppBar(
-        title: const Text(
-          "Cuối Kì",
-          style: TextStyle(
-              color: AppColor.white,
-              fontSize: 30.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: AutofillHints.streetAddressLevel2),
-        ),
-        centerTitle: true,
-        backgroundColor: AppColor.bgColor,
-      ),
       body: Center(
         child: SingleChildScrollView(
               child: Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Form(
                 key: formKey,
               child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'Đăng nhập',
-                  style: TextStyle(color: AppColor.pink, fontSize: 24.0),
+                  'Chào mừng',
+                  style: TextStyle(color: AppColor.pink, 
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                const Text(
+                  'Đăng nhập tài khoản',
+                  style: TextStyle(color: AppColor.grey, 
+                  fontSize: 15.0,),
                   textAlign: TextAlign.center,
                 ),
 
-                const SizedBox(height: 30.0),
+                const SizedBox(height: 50.0),
                 AppTextField(
                     controller: emailController,
                     textInputAction: TextInputAction.next,

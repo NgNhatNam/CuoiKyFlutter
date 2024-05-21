@@ -4,6 +4,7 @@ import 'package:app_cuoiki/pages/forgotpassword_page.dart';
 import 'package:app_cuoiki/resources/app_color.dart';
 import 'package:app_cuoiki/utils/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class EforgotPasswordPage extends StatefulWidget {
   const EforgotPasswordPage({super.key});
@@ -15,6 +16,16 @@ class EforgotPasswordPage extends StatefulWidget {
 class _EforgotPasswordPageState extends State<EforgotPasswordPage> {
   TextEditingController emailController = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey();
+
+    void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,15 +41,16 @@ class _EforgotPasswordPageState extends State<EforgotPasswordPage> {
                     children: [
                   const Text(
                     'Quên mật khẩu',
-                    style: TextStyle(color: AppColor.pink, fontSize: 48.0, fontWeight:FontWeight.bold ),
+                    style: TextStyle(color: AppColor.pink, fontSize: 24.0,
+                     fontWeight:FontWeight.bold ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 10.0),
-                     Text(
+                    const Text(
                     'Nhập email của bạn',
                     style: TextStyle(
-                      color: AppColor.grey.withOpacity(0.3), 
-                      fontSize: 24.0,),
+                      color: AppColor.grey, 
+                      fontSize: 15.0,),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40.0),
